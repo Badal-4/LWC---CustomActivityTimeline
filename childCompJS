@@ -1,0 +1,33 @@
+
+import { LightningElement,api ,track } from 'lwc';
+
+export default class ChildLWC extends LightningElement {
+
+
+   @api activity = [];
+   @api open;
+   @api label;
+   accordianSection = '';
+   buttonClicked;
+   @track cssClass = "isExpendable slds-timeline__item_expandable slds-timeline__item_task";
+   @track iconName = '';
+
+    /*Method 1 --> By changing css class*/
+   toggleActivity1() {
+     
+       this.buttonClicked = !this.buttonClicked; //set to true if false, false if true.
+       this.cssClass = this.buttonClicked ? 'slds-is-open' : 'isExpendable slds-timeline__item_expandable slds-timeline__item_task';
+   }
+
+/*Method 2---> by using query Selector*/
+   toggleActivity2()
+   {
+    this.buttonClicked = !this.buttonClicked;
+   const selector = 'expId';
+   const theDiv = this.template.querySelector('[data-id="' +selector+ '"]');
+   // theDiv.className=  'slds-is-open';
+      theDiv.className = this.buttonClicked ? 'slds-is-open' : 'isExpendable slds-timeline__item_expandable slds-timeline__item_task';
+   }
+   
+}
+
