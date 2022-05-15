@@ -1,0 +1,9 @@
+public class ActivityTimelineClass 
+{
+    @AuraEnabled(cacheable=true)
+    public static List<Task> findTask()
+    {
+        return [Select Id,Subject,Description,ActivityDate,Who.Name,WhoId,Priority
+               from Task];
+    }
+}
