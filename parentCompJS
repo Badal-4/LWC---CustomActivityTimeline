@@ -1,0 +1,19 @@
+import { LightningElement,wire } from 'lwc';
+import findTask from '@salesforce/apex/ActivityTimelineClass.findTask';
+export default class ParentLWC extends LightningElement
+{
+    lstActivity;
+    @wire(findTask,{})
+    wiredRecords({error,data})
+    {
+        if(data)
+        {
+            this.lstActivity = data;
+            console.log(JSON.stringify(data));
+        }
+        else if(error)
+        {
+            console.log(JSON.stringify(error));
+        }
+    }
+}
