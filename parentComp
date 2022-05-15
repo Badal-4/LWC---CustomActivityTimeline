@@ -1,0 +1,5 @@
+<template>
+<template for:each={lstActivity} for:item="task">
+    <c-child-comp key ={task.Id} activity = {task}></c-child-comp>
+</template>
+</template>
